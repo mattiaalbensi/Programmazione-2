@@ -1,0 +1,11 @@
+import socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("127.0.0.1", 4444))
+server.listen(1)
+print("Server in ascolto su 127.0.0.1:4444")
+connection, address = server.accept()
+print("Connessione ricevuta da:", address)
+message = connection.recv(1024)
+print("Messaggio ricevuto:", message.decode())
+connection.close()
+server.close()
